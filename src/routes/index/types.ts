@@ -1,0 +1,3 @@
+/**
+ * Routenspezifische Typ-Definitionen
+ */

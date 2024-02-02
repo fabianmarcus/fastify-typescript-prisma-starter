@@ -1,0 +1,61 @@
+{
+  "name": "routenverlauf-backend",
+  "version": "1.0.0",
+  "description": "Backend Code des Projekts Routenverlauf",
+  "main": "./dist/server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "pm2 start",
+    "dev": "nodemon ./src/server.ts",
+    "build": "npm install && tsc -p tsconfig.json && npx prisma generate",
+    "pm2-deploy:prod": "pm2 deploy production",
+    "pm2-deploy:staging": "pm2 deploy staging",
+    "pm2-deploy:prod:env": "cp -p /var/www/env /var/www/routenplanung-production/current/.env",
+    "pm2-deploy:staging:env": "cp -p /var/www/env /var/www/routenplanung-staging/current/.env",
+    "pm2-deploy:prod:post": "npm run build && pm2 startOrRestart ecosystem.config.js --only routenplanung --env production",
+    "pm2-deploy:staging:post": "npm run build && pm2 startOrRestart ecosystem.config.js --only routenplanung-staging --env staging"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phoenixreisen/routenverlauf-backend.git"
+  },
+  "keywords": [],
+  "author": "Phoenix Reisen <it@phoenixreisen.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phoenixreisen/routenverlauf-backend/issues"
+  },
+  "homepage": "https://github.com/phoenixreisen/routenverlauf-backend#readme",
+  "dependencies": {
+    "@apollo/server": "^4.9.5",
+    "@as-integrations/fastify": "^2.1.1",
+    "@fastify/cors": "^8.3.0",
+    "@fastify/jwt": "^7.2.0",
+    "@fastify/swagger": "^8.3.1",
+    "@fastify/swagger-ui": "^1.8.0",
+    "@prisma/client": "^5.4.2",
+    "date-and-time": "^3.0.2",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
+    "fastify": "^4.15.0",
+    "graphql": "^16.8.1",
+    "sequelize": "^6.31.0",
+    "sqlite3": "^5.1.6",
+    "tedious": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.2",
+    "@types/node": "^20.2.4",
+    "@types/supertest": "^2.0.12",
+    "jest": "^29.5.0",
+    "nodemon": "^3.0.1",
+    "pino": "^8.14.1",
+    "pino-pretty": "^10.0.1",
+    "pm2": "^5.3.0",
+    "prisma": "^5.4.2",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
