@@ -15,7 +15,6 @@ Das Backend ist auf folgenden Technologien aufgebaut:
 - [Node.js](https://nodejs.org/en/)
 - [Fastify Framework](https://www.fastify.io/)
 - [Prisma ORM](https://www.prisma.io/)
-- [MSSQL](https://www.microsoft.com/de-de/sql-server/sql-server-2019)
 
 ## Dokumentation
 
