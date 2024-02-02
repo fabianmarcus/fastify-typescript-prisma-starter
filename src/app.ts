@@ -13,8 +13,6 @@ import { authenticate } from './hooks/hooks.onRequest';
 //--- Routes -----
 
 import { indexRoutes } from './routes/routes';
-import { routeRoutes } from './routes/routes';
-import { courseRoutes } from './routes/routes';
 
 //--- Start -----
 
@@ -42,8 +40,6 @@ export const FastifyServer = async () => {
 
         //--- Routing -----
         fastify.register(indexRoutes);
-        fastify.register(routeRoutes);
-        fastify.register(courseRoutes);
 
         //--- GraphQL -----
         fastify.register(fastifyApollo(apollo));
